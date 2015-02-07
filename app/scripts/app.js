@@ -32,12 +32,32 @@ angular.module('Finanfox', ['ionic', 'config', 'Finanfox.controllers', 'pouchdb'
 			controller: 'AppCtrl'
 		})
 
-		.state('app.single', {
+		.state('app.home', {
 			url: '/home',
 			views: {
 				'menuContent' :{
 					templateUrl: 'templates/home.html',
 					controller: 'HomeCtrl'
+				}
+			}
+		})
+
+		.state('app.despesas', {
+			url: '/despesas',
+			views: {
+				'menuContent' :{
+					templateUrl: 'templates/despesas.html',
+					controller: 'DespesasCtrl'
+				}
+			}
+		})
+
+		.state('app.receitas', {
+			url: '/receitas',
+			views: {
+				'menuContent' :{
+					templateUrl: 'templates/receitas.html',
+					controller: 'ReceitasCtrl'
 				}
 			}
 		});
