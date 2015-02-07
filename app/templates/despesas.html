@@ -19,15 +19,25 @@
 
 
 	<ion-content class="has-header has-subheader">
- 
-
+		<div class="padding">
+	 		<ion-list>
+				<ion-item class="despesa-item row" ng-repeat="despesa in despesas | bymonth:currentMonth">
+					<div class="col col-20">
+						<span class="category despesa-category">{{ despesa.doc.category | limitTo:2 | uppercase }}</span>
+					</div>
+					<div class="col col-50"> 
+						<div class="desc"> {{ despesa.doc.desc }}</div>
+						<div class="date"> {{ despesa.doc.date | date:"dd/MM/yyyy" }} </div>
+					</div>
+					<div class="col value"> {{ despesa.doc.value | brl }} </div>
+				</ion-item>
+	 		</ion-list>			
+		</div>
 	</ion-content>
-
-
 
     <div class="bar bar-footer bar-assertive">
       <button class="button button-clear button-disabled">Total</button>
-      <button class="button button-clear button-disabled">R$ 9,99</button>
+      <button class="button button-clear button-disabled"> {{ getTotal() | brl }} </button>
     </div>
 
 	<script type="text/ng-template" id="add-despesa.html">
@@ -38,17 +48,32 @@
 			</ion-header-bar>
 			<ion-content>
 				<div class="padding">
+					
+					<label class="item item-input">
+						<span class="input-label"> Valor </span>
+						<input data-ng-model="despesa.value" type="number" step="0.01">
+					</label>
 
-					<div class="item-input">
-						<label class="item-input-wrapper">
-							<input type="search" placeholder="Categoria">
-						</label>
-						<button class="button button-icon icon ion-plus">
-						</button>
-					</div>
+					<label class="item item-input">
+						<span class="input-label"> Descrição </span>
+						<input data-ng-model="despesa.desc" type="text">
+					</label>
 
-					<button class="button button-block button-assertive">
-						Adicionar
+					<fancy-select
+						header-text="Selecione Categoria"
+						allow-empty='false'
+						value="category.chosen"
+						text="'Selecione Categoria'"
+						items="categories">
+					</fancy-select>
+					
+					<label class="item item-input">
+						<span class="input-label"> Data </span>
+						<input data-ng-model="despesa.date" type="date">
+					</label>
+
+					<button data-ng-disabled="!despesa.value || !despesa.desc || category.chosen === false" class="button button-block button-assertive" data-ng-click="addDespesa()">
+						Adicionar 
 					</button>
 				</div>
 			</ion-content>

@@ -23,7 +23,7 @@ angular.module('Finanfox').factory('financas', function ($rootScope) {
 		dbReceitas.put(receita, function (err, response) {
 			console.log(err, response);
 		}).then(function (response) {
-			console.log(response);
+			console.log(	response);
 			financas.receitas.get();
 		});
 	};
@@ -49,8 +49,13 @@ angular.module('Finanfox').factory('financas', function ($rootScope) {
 	/* Despesas Pessoais */
 	financas.despesas = {};
 
-	financas.despesas.add = function () {
-
+	financas.despesas.add = function (despesa) {
+		dbDespesas.put(despesa, function (err, response) {
+			console.log(err, response);
+		}).then(function (response) {
+			console.log(	response);
+			financas.despesas.get();
+		});
 	};
 
 	financas.despesas.remove = function () {
@@ -58,7 +63,11 @@ angular.module('Finanfox').factory('financas', function ($rootScope) {
 	};
 
 	financas.despesas.get = function () {
-
+		dbDespesas.allDocs({
+			include_docs: true
+		}).then(function (docs) {
+			$rootScope.$broadcast('financas.despesas.updated', docs.rows);
+		})
 	};
 
 	financas.despesas.edit = function () {

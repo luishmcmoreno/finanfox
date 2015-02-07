@@ -8,9 +8,9 @@
  * Controller of the Finanfox
  */
 angular.module('Finanfox').controller('ReceitasCtrl', function ($scope, $ionicModal, financas) {
+	
 	$scope.month = 0;
-
-	financas.receitas.get();	
+	financas.receitas.get();
 
 	$scope.$watch('month', function (nv) {
 		var currentMonth = new Date().getMonth();
@@ -46,6 +46,7 @@ angular.module('Finanfox').controller('ReceitasCtrl', function ($scope, $ionicMo
 
 		if (typeof($scope.receita.date) !== 'object') {
 			$scope.receita.date = new Date();
+			$scope.receita.date.setMonth(2);
 		}
 
 		$scope.receita._id = new Date().getTime();

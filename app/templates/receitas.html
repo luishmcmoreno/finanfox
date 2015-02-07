@@ -18,8 +18,7 @@
 	</div>
 
 
-	<ion-content class="has-header has-subheader">
- 		
+	<ion-content class="has-header has-subheader">	
 		<div class="padding">
 	 		<ion-list>
 				<ion-item class="receita-item row" ng-repeat="receita in receitas | bymonth:currentMonth">
@@ -40,7 +39,6 @@
       <button class="button button-clear button-disabled">Total</button>
       <button class="button button-clear button-disabled"> {{ getTotal() | brl }} </button>
     </div>
-
 
 	<script type="text/ng-template" id="add-receita.html">
 		<ion-modal-view>
@@ -74,7 +72,7 @@
 						<input data-ng-model="receita.date" type="date">
 					</label>
 
-					<button data-ng-disabled="!receita.value || !receita.desc || !category.chosen" class="button button-block button-balanced" data-ng-click="addReceita()">
+					<button data-ng-disabled="!receita.value || !receita.desc || category.chosen === false" class="button button-block button-balanced" data-ng-click="addReceita()">
 						Adicionar 
 					</button>
 				</div>

@@ -42,6 +42,11 @@ $size: 44px;
 	display: inline-block;
 }
 
+.despesa-category {
+	background: #EF4E3A;
+}
+
+.despesa-item,
 .receita-item {
 	padding: 0;
 	border: none;
@@ -51,6 +56,7 @@ $size: 44px;
 }
 
 
+.despesa-item:first-child,
 .receita-item:first-child {
 	border-top: none;
 }
