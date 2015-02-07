@@ -7,3 +7,50 @@
 .menu-receitas {
 	color: #66CC33;
 }
+
+$size: 44px;
+
+.item {
+	line-height: 44px;
+}
+
+
+
+.value {
+	text-align: right;
+}
+
+.desc {
+	font-size: 16px;
+	font-weight: bold;
+	line-height: $size*0.7;
+}
+
+.date {
+	line-height: $size*0.3;
+	font-size: 12px;
+}
+
+.category {
+	text-align: center;
+	color: #FFF;
+	height: $size;
+	line-height: $size;
+	width: $size;
+	background: #66CC33;
+	border-radius: 50%;
+	display: inline-block;
+}
+
+.receita-item {
+	padding: 0;
+	border: none;
+	padding-bottom: 10px;
+	border-top: 1px solid #AAAAAA;
+	margin-top: 10px;
+}
+
+
+.receita-item:first-child {
+	border-top: none;
+}

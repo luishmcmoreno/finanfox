@@ -6,7 +6,7 @@
 
 
   <ion-nav-buttons side="right">
-    <button menu-toggle="right" class="button button-icon icon assertive ion-plus"></button>
+    <button menu-toggle="right" class="button button-icon icon ion-plus" data-ng-click="showAddReceita()"></button>
   </ion-nav-buttons>
 
 	<div class="bar bar-balanced bar-subheader">
@@ -19,16 +19,68 @@
 
 
 	<ion-content class="has-header has-subheader">
- 
-
+ 		
+		<div class="padding">
+	 		<ion-list>
+				<ion-item class="receita-item row" ng-repeat="receita in receitas | bymonth:currentMonth">
+					<div class="col col-20">
+						<span class="category receita-category">{{ receita.doc.category | limitTo:2 | uppercase }}</span>
+					</div>
+					<div class="col col-50"> 
+						<div class="desc"> {{ receita.doc.desc }}</div>
+						<div class="date"> {{ receita.doc.date | date:"dd/MM/yyyy" }} </div>
+					</div>
+					<div class="col value"> {{ receita.doc.value | brl }} </div>
+				</ion-item>
+	 		</ion-list>			
+		</div>
 	</ion-content>
-
-
 
     <div class="bar bar-footer bar-balanced">
       <button class="button button-clear button-disabled">Total</button>
-      <button class="button button-clear button-disabled">R$ 9,99</button>
+      <button class="button button-clear button-disabled"> {{ getTotal() | brl }} </button>
     </div>
+
+
+	<script type="text/ng-template" id="add-receita.html">
+		<ion-modal-view>
+			<ion-header-bar class="bar-balanced">
+			    <button class="button button-icon icon ion-arrow-left-c" data-ng-click="addReceitaModal.hide()"></button>
+				<h1 class="title">Adicionar Receita</h1>
+			</ion-header-bar>
+			<ion-content>
+				<div class="padding">
+
+					<label class="item item-input">
+						<span class="input-label"> Valor </span>
+						<input data-ng-model="receita.value" type="number" step="0.01">
+					</label>
+
+					<label class="item item-input">
+						<span class="input-label"> Descrição </span>
+						<input data-ng-model="receita.desc" type="text">
+					</label>
+
+					<fancy-select
+						header-text="Selecione Categoria"
+						allow-empty='false'
+						value="category.chosen"
+						text="'Selecione Categoria'"
+						items="categories">
+					</fancy-select>	
+
+					<label class="item item-input">
+						<span class="input-label"> Data </span>
+						<input data-ng-model="receita.date" type="date">
+					</label>
+
+					<button data-ng-disabled="!receita.value || !receita.desc || !category.chosen" class="button button-block button-balanced" data-ng-click="addReceita()">
+						Adicionar 
+					</button>
+				</div>
+			</ion-content>
+		</ion-modal-view>
+	</script>
 
 </ion-view>
 

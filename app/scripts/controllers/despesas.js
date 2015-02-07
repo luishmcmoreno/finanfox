@@ -7,7 +7,7 @@
  * # DespesasCtrl
  * Controller of the Finanfox
  */
-angular.module('Finanfox').controller('DespesasCtrl', function ($scope) {
+angular.module('Finanfox').controller('DespesasCtrl', function ($scope, $ionicModal) {
 
 	$scope.month = 0;
 
@@ -25,6 +25,18 @@ angular.module('Finanfox').controller('DespesasCtrl', function ($scope) {
 
 	$scope.decMonth = function () {
 		$scope.month--;
+	};
+
+
+	$ionicModal.fromTemplateUrl('add-despesa.html', {
+		scope: $scope,
+		animation: 'slide-in-up'
+	}).then(function(modal) {
+		$scope.addDespesaModal = modal;
+	});
+
+	$scope.showAddDespesa = function() {
+		$scope.addDespesaModal.show();
 	};
 
 });
