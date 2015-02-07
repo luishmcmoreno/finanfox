@@ -1,7 +1,34 @@
-<ion-view title="despesas">
-  <ion-content class="has-header">
-    <h1>despesas</h1>
+<ion-view title="Despesas">
+  
+  <ion-nav-buttons side="left">
+    <button menu-toggle="left" class="button button-icon icon ion-navicon"></button>
+  </ion-nav-buttons>
 
-  </ion-content>
+
+  <ion-nav-buttons side="right">
+    <button menu-toggle="right" class="button button-icon icon ion-plus"></button>
+  </ion-nav-buttons>
+
+	<div class="bar bar-assertive bar-subheader">
+		<button class="button button-icon icon ion-chevron-left" data-ng-click="decMonth()"></button>
+		<h2 class="title"> 
+			{{ monthNames[currentMonth] }}/{{ currentYear }}
+		</h2>
+	 	<button class="button button-icon icon ion-chevron-right" data-ng-click="incMonth()"></button>
+	</div>
+
+
+	<ion-content class="has-header has-subheader">
+ 
+
+	</ion-content>
+
+
+
+    <div class="bar bar-footer bar-assertive">
+      <button class="button button-clear button-disabled">Total</button>
+      <button class="button button-clear button-disabled">R$ 9,99</button>
+    </div>
+
 </ion-view>
 
