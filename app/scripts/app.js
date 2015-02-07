@@ -22,7 +22,10 @@ angular.module('Finanfox', ['ionic', 'config', 'Finanfox.controllers', 'pouchdb'
 	});
 })
 
-.config(function($stateProvider, $urlRouterProvider) {
+.config(function($stateProvider, $urlRouterProvider, $compileProvider) {
+
+    $compileProvider.aHrefSanitizationWhitelist(/^\s*(https?|ftp|mailto|app):/);
+
 	$stateProvider
 
 		.state('app', {

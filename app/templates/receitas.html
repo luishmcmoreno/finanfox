@@ -29,7 +29,7 @@
 						<div class="desc"> {{ receita.doc.desc }}</div>
 						<div class="date"> {{ receita.doc.date | date:"dd/MM/yyyy" }} </div>
 					</div>
-					<div class="col value"> {{ receita.doc.value | brl }} </div>
+					<div class="col value price-item"> {{ receita.doc.value | brl }} </div>
 				</ion-item>
 	 		</ion-list>			
 		</div>
@@ -47,7 +47,7 @@
 				<h1 class="title">Adicionar Receita</h1>
 			</ion-header-bar>
 			<ion-content>
-				<div class="padding">
+				<div class="padding receitas">
 
 					<label class="item item-input">
 						<span class="input-label"> Valor </span>

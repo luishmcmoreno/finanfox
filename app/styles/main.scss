@@ -10,7 +10,10 @@
 
 $size: 44px;
 
-.item {
+
+
+.despesas .item,
+.receitas .item {
 	line-height: 44px;
 }
 
@@ -55,8 +58,20 @@ $size: 44px;
 	margin-top: 10px;
 }
 
+.price-item {
+	line-height: $size;
+}
+
 
 .despesa-item:first-child,
 .receita-item:first-child {
 	border-top: none;
+}
+
+.green {
+	color: #060;
+}
+
+.red {
+	color: #EF4E3A;
 }

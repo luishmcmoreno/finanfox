@@ -46,7 +46,6 @@ angular.module('Finanfox').controller('ReceitasCtrl', function ($scope, $ionicMo
 
 		if (typeof($scope.receita.date) !== 'object') {
 			$scope.receita.date = new Date();
-			$scope.receita.date.setMonth(2);
 		}
 
 		$scope.receita._id = new Date().getTime();

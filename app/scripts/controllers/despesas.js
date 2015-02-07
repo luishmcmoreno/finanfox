@@ -46,7 +46,6 @@ angular.module('Finanfox').controller('DespesasCtrl', function ($scope, $ionicMo
 
 		if (typeof($scope.despesa.date) !== 'object') {
 			$scope.despesa.date = new Date();
-			$scope.despesa.date.setMonth(2);
 		}
 
 		$scope.despesa._id = new Date().getTime();
